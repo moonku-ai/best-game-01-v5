@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUMEN — Keeper of the Night Garden</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #05081a;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+  #wrap { position: relative; width: min(1280px, 100vw); }
+  canvas {
+    display: block; width: 100%; height: auto;
+    background: #0b1030;
+    border-radius: 6px;
+    box-shadow: 0 0 60px rgba(80, 100, 220, 0.25);
+    cursor: crosshair;
+  }
+  #fallback {
+    display: none; color: #f4ead8; text-align: center; padding: 40px;
+  }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="1280" height="720"></canvas>
+  <div id="fallback">Browser ini tidak mendukung canvas. Coba Chrome atau Firefox terbaru.</div>
+</div>
+<script type="module" src="./src/main.js"></script>
+<script>
+  // If modules fail (very old browser), show the fallback note.
+  window.addEventListener('error', function (e) {
+    if (e.message && e.message.indexOf('module') !== -1) {
+      document.getElementById('fallback').style.display = 'block';
+    }
+  }, true);
+</script>
+</body>
+</html>
